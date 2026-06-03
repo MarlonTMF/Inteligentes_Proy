@@ -1,0 +1,101 @@
+rank,query_title,film_id,title,poster_file,similarity
+1,Obsesión,95,Culpa mía,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0095_Culpa_mía.jpg,0.57989955
+2,Obsesión,112,Ruta de escape,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0112_Ruta_de_escape.jpg,0.5563023
+3,Obsesión,4,Jack Ryan de Tom Clancy: Guerra Encubierta,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0004_Jack_Ryan_de_Tom_Clancy__Guerra_Encubierta.jpg,0.555209
+4,Obsesión,63,Cuenta atrás,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0063_Cuenta_atrás.jpg,0.54739386
+5,Obsesión,73,Worldbreaker,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0073_Worldbreaker.jpg,0.5386661
+1,La momia de Lee Cronin,69,ಕೆಡಿ - ದಿ ಡೆವಿಲ್,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0069_ಕ_ಡ__-_ದ__ಡ_ವ_ಲ_.jpg,0.41212183
+2,La momia de Lee Cronin,10,Patriotismo 2,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0010_Patriotismo_2.jpg,0.36982813
+3,La momia de Lee Cronin,124,Expediente Warren: El último rito,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0124_Expediente_Warren__El_último_rito.jpg,0.36330414
+4,La momia de Lee Cronin,35,Depredador dominante,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0035_Depredador_dominante.jpg,0.3585772
+5,La momia de Lee Cronin,93,Noche de bodas 2,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0093_Noche_de_bodas_2.jpg,0.35347658
+1,Kara,4,Jack Ryan de Tom Clancy: Guerra Encubierta,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0004_Jack_Ryan_de_Tom_Clancy__Guerra_Encubierta.jpg,0.5543747
+2,Kara,112,Ruta de escape,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0112_Ruta_de_escape.jpg,0.54672754
+3,Kara,89,La guerra de los mundos,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0089_La_guerra_de_los_mundos.jpg,0.5459819
+4,Kara,85,El drama,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0085_El_drama.jpg,0.5436387
+5,Kara,95,Culpa mía,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0095_Culpa_mía.jpg,0.536782
+1,Jack Ryan de Tom Clancy: Guerra Encubierta,63,Cuenta atrás,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0063_Cuenta_atrás.jpg,0.6328299
+2,Jack Ryan de Tom Clancy: Guerra Encubierta,67,Shelter: El Protector,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0067_Shelter__El_Protector.jpg,0.6147607
+3,Jack Ryan de Tom Clancy: Guerra Encubierta,112,Ruta de escape,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0112_Ruta_de_escape.jpg,0.59383154
+4,Jack Ryan de Tom Clancy: Guerra Encubierta,128,Protector,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0128_Protector.jpg,0.587843
+5,Jack Ryan de Tom Clancy: Guerra Encubierta,73,Worldbreaker,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0073_Worldbreaker.jpg,0.56209606
+1,The Punisher: One Last Kill,78,La colegiala se enamora,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0078_La_colegiala_se_enamora.jpg,0.54043365
+2,The Punisher: One Last Kill,9,Matrix,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0009_Matrix.jpg,0.53352547
+3,The Punisher: One Last Kill,128,Protector,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0128_Protector.jpg,0.51205134
+4,The Punisher: One Last Kill,47,Acero puro,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0047_Acero_puro.jpg,0.49460632
+5,The Punisher: One Last Kill,123,Brothers Under Fire,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0123_Brothers_Under_Fire.jpg,0.47842982
+1,Backrooms,98,Cincuenta sombras liberadas,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0098_Cincuenta_sombras_liberadas.jpg,0.4454213
+2,Backrooms,35,Depredador dominante,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0035_Depredador_dominante.jpg,0.4057839
+3,Backrooms,92,ദൃശ്യം 3,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0092_ദ_ശ_യ__3.jpg,0.40087727
+4,Backrooms,119,Salvaje Despertar,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0119_Salvaje_Despertar.jpg,0.38619205
+5,Backrooms,85,El drama,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0085_El_drama.jpg,0.38210377
+1,Proyecto Salvación,47,Acero puro,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0047_Acero_puro.jpg,0.61153936
+2,Proyecto Salvación,136,Los pecadores,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0136_Los_pecadores.jpg,0.60132104
+3,Proyecto Salvación,147,Culpa nuestra,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0147_Culpa_nuestra.jpg,0.5967892
+4,Proyecto Salvación,116,火遮眼,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0116_火遮眼.jpg,0.57010716
+5,Proyecto Salvación,125,火遮眼,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0125_火遮眼.jpg,0.57010716
+1,Super Mario Galaxy la película,82,Toy Story 5,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0082_Toy_Story_5.jpg,0.61220354
+2,Super Mario Galaxy la película,134,El viaje de Chihiro,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0134_El_viaje_de_Chihiro.jpg,0.58572274
+3,Super Mario Galaxy la película,32,Guardianes de la noche: Kimetsu no Yaiba La fortaleza infinita,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0032_Guardianes_de_la_noche__Kimetsu_no_Yaiba_La_fortaleza_infinita.jpg,0.5786141
+4,Super Mario Galaxy la película,56,La leyenda de Aang: El último Airbender,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0056_La_leyenda_de_Aang__El_último_Airbender.jpg,0.5437735
+5,Super Mario Galaxy la película,44,Zootrópolis 2,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0044_Zootrópolis_2.jpg,0.53626955
+1,Matrix,67,Shelter: El Protector,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0067_Shelter__El_Protector.jpg,0.5365169
+2,Matrix,5,The Punisher: One Last Kill,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0005_The_Punisher__One_Last_Kill.jpg,0.53352547
+3,Matrix,103,Apocalypto,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0103_Apocalypto.jpg,0.52636844
+4,Matrix,142,Rise of the Conqueror,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0142_Rise_of_the_Conqueror.jpg,0.5234092
+5,Matrix,12,Tu corazón se romperá,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0012_Tu_corazón_se_romperá.jpg,0.5042086
+1,Patriotismo 2,69,ಕೆಡಿ - ದಿ ಡೆವಿಲ್,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0069_ಕ_ಡ__-_ದ__ಡ_ವ_ಲ_.jpg,0.5135404
+2,Patriotismo 2,13,Door II : Tokyo Diary,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0013_Door_II___Tokyo_Diary.jpg,0.4959297
+3,Patriotismo 2,12,Tu corazón se romperá,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0012_Tu_corazón_se_romperá.jpg,0.4934049
+4,Patriotismo 2,26,ಮಾರ್ಕ್,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0026_ಮ_ರ_ಕ_.jpg,0.49180585
+5,Patriotismo 2,102,Te van a matar,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0102_Te_van_a_matar.jpg,0.47152758
+1,Intercambiados,36,GOAT: Como cabras,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0036_GOAT__Como_cabras.jpg,0.5475729
+2,Intercambiados,44,Zootrópolis 2,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0044_Zootrópolis_2.jpg,0.4949096
+3,Intercambiados,134,El viaje de Chihiro,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0134_El_viaje_de_Chihiro.jpg,0.46353793
+4,Intercambiados,27,Hoppers,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0027_Hoppers.jpg,0.45743623
+5,Intercambiados,64,Criaturas luminosas,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0064_Criaturas_luminosas.jpg,0.40847558
+1,Tu corazón se romperá,62,Dime lo que quieres (de verdad),C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0062_Dime_lo_que_quieres__de_verdad_.jpg,0.62380505
+2,Tu corazón se romperá,67,Shelter: El Protector,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0067_Shelter__El_Protector.jpg,0.5962752
+3,Tu corazón se romperá,41,System,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0041_System.jpg,0.58405524
+4,Tu corazón se romperá,129,Salitan,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0129_Salitan.jpg,0.5831498
+5,Tu corazón se romperá,73,Worldbreaker,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0073_Worldbreaker.jpg,0.5688354
+1,Door II : Tokyo Diary,43,रॉकी और रानी की प्रेम कहानी,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0043_र_क__और_र_न__क__प_र_म_कह_न_.jpg,0.5221073
+2,Door II : Tokyo Diary,1,Obsesión,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0001_Obsesión.jpg,0.5174486
+3,Door II : Tokyo Diary,126,Las guerreras k-pop,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0126_Las_guerreras_k-pop.jpg,0.5158285
+4,Door II : Tokyo Diary,73,Worldbreaker,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0073_Worldbreaker.jpg,0.5069246
+5,Door II : Tokyo Diary,78,La colegiala se enamora,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0078_La_colegiala_se_enamora.jpg,0.50417554
+1,കാട്ടാളൻ,69,ಕೆಡಿ - ದಿ ಡೆವಿಲ್,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0069_ಕ_ಡ__-_ದ__ಡ_ವ_ಲ_.jpg,0.4853369
+2,കാട്ടാളൻ,16,Mortal Kombat II,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0016_Mortal_Kombat_II.jpg,0.48106033
+3,കാട്ടാളൻ,113,El señor de los anillos: El retorno del rey,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0113_El_señor_de_los_anillos__El_retorno_del_rey.jpg,0.47596782
+4,കാട്ടാളൻ,58,7 كلاب,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0058_7_كلاب.jpg,0.46607518
+5,കാട്ടാളൻ,26,ಮಾರ್ಕ್,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0026_ಮ_ರ_ಕ_.jpg,0.46488702
+1,चाँद मेरा दिल,31,Herida,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0031_Herida.jpg,0.59937865
+2,चाँद मेरा दिल,83,Donselya,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0083_Donselya.jpg,0.5764517
+3,चाँद मेरा दिल,140,Juegos Psicológicos,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0140_Juegos_Psicológicos.jpg,0.5635226
+4,चाँद मेरा दिल,50,After: Almas perdidas,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0050_After__Almas_perdidas.jpg,0.5626617
+5,चाँद मेरा दिल,98,Cincuenta sombras liberadas,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0098_Cincuenta_sombras_liberadas.jpg,0.5570893
+1,Mortal Kombat II,87,Vengadores: Infinity War,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0087_Vengadores__Infinity_War.jpg,0.65516204
+2,Mortal Kombat II,24,Mortal Kombat,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0024_Mortal_Kombat.jpg,0.65418583
+3,Mortal Kombat II,60,He-Man y los masters del universo,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0060_He-Man_y_los_masters_del_universo.jpg,0.64628404
+4,Mortal Kombat II,102,Te van a matar,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0102_Te_van_a_matar.jpg,0.6120268
+5,Mortal Kombat II,84,Los Vengadores,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0084_Los_Vengadores.jpg,0.5848806
+1,Escuadrón letal,84,Los Vengadores,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0084_Los_Vengadores.jpg,0.59928644
+2,Escuadrón letal,67,Shelter: El Protector,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0067_Shelter__El_Protector.jpg,0.51180613
+3,Escuadrón letal,125,火遮眼,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0125_火遮眼.jpg,0.51149446
+4,Escuadrón letal,116,火遮眼,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0116_火遮眼.jpg,0.51149446
+5,Escuadrón letal,141,Origen,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0141_Origen.jpg,0.5044976
+1,Avatar: Fuego y ceniza,136,Los pecadores,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0136_Los_pecadores.jpg,0.6720038
+2,Avatar: Fuego y ceniza,45,Vacaciones para matar,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0045_Vacaciones_para_matar.jpg,0.60118824
+3,Avatar: Fuego y ceniza,113,El señor de los anillos: El retorno del rey,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0113_El_señor_de_los_anillos__El_retorno_del_rey.jpg,0.57633114
+4,Avatar: Fuego y ceniza,87,Vengadores: Infinity War,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0087_Vengadores__Infinity_War.jpg,0.5617833
+5,Avatar: Fuego y ceniza,149,28 años después: El templo de los huesos,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0149_28_años_después__El_templo_de_los_huesos.jpg,0.55583
+1,Iron Lung,127,Pulp Fiction,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0127_Pulp_Fiction.jpg,0.5171305
+2,Iron Lung,99,Raja Shivaji,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0099_Raja_Shivaji.jpg,0.5148548
+3,Iron Lung,88,SEND HELP (Enviad ayuda),C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0088_SEND_HELP__Enviad_ayuda_.jpg,0.5102763
+4,Iron Lung,128,Protector,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0128_Protector.jpg,0.4918232
+5,Iron Lung,91,Drácula,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0091_Drácula.jpg,0.47881734
+1,Graphic Desires,31,Herida,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0031_Herida.jpg,0.567786
+2,Graphic Desires,83,Donselya,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0083_Donselya.jpg,0.53598434
+3,Graphic Desires,98,Cincuenta sombras liberadas,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0098_Cincuenta_sombras_liberadas.jpg,0.5332314
+4,Graphic Desires,59,La asistenta,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0059_La_asistenta.jpg,0.52782625
+5,Graphic Desires,103,Apocalypto,C:\Users\ELITEBOOK\Desktop\Programas 9no\Sistemas Inteligentes\ProyectoFin\data\posters\0103_Apocalypto.jpg,0.5046925
