@@ -1,26 +1,39 @@
-# Informe final - Practica 3.1 CNN + similitud de coseno
+# Informe de estado - Practica 3.1 CNN + similitud de coseno
 
 ## Objetivo
 
-Se ajusto el proyecto para trabajar con 150 peliculas importadas desde TMDB y ejecutar el modulo 3.1 de la practica: extraccion de embeddings visuales con ResNet-50 preentrenado y recomendacion por similitud de coseno.
+Se ajusto el proyecto para seguir la guia indicada por el ingeniero: usar DVD Rental como fuente de peliculas, TMDB como fuente de posters y ejecutar el modulo 3.1 con embeddings visuales ResNet-50 + similitud de coseno.
 
 ## Cambios realizados
 
-- `scripts/04_download_posters.py`: ahora importa por defecto peliculas populares de TMDB con `--source tmdb-popular --limit 150`, descarga posters y genera `data/posters/poster_download_log.csv`.
-- `scripts/06_cnn_cosine_recommendations.py`: se ajusto la carga de metadatos para usar el `filename` exacto del log, evitando mezclar posters antiguos con los 150 nuevos.
+- `scripts/04_download_posters.py`: ahora usa por defecto `--source db --limit 600`, lee peliculas desde PostgreSQL/DVD Rental y busca posters en TMDB.
+- `scripts/04_download_posters.py`: se conserva `--source tmdb-popular` solo como respaldo, no como flujo principal de entrega.
+- `scripts/04_download_posters.py`: se agrego `connect_to_dvd_rental()` para mostrar un error claro si las credenciales de PostgreSQL no son validas.
+- `scripts/06_cnn_cosine_recommendations.py`: se ajusto la carga de metadatos para usar el `filename` exacto del log.
 - `scripts/06_cnn_cosine_recommendations.py`: se mantuvo ResNet-50 preentrenado como extractor de caracteristicas y se limpio la visualizacion t-SNE para titulos con alfabetos no latinos.
-- `practica_3_1.ipynb`: se regenero el notebook para documentar y ejecutar el punto 3.1 con 150 posters locales.
+- `dvd_rental_posters.ipynb`: se actualizo para descargar posters desde DVD Rental + TMDB con meta de 600 peliculas y tasa minima de 90%.
+- `practica_3_1.ipynb`: queda como notebook del modulo CNN una vez generado el log correcto de DVD Rental.
 
 ## Ejecucion realizada
 
-Comandos ejecutados:
+Comando oficial configurado:
 
 ```powershell
-python scripts\04_download_posters.py --source tmdb-popular --limit 150
+python scripts\04_download_posters.py --source db --limit 600
 python scripts\06_cnn_cosine_recommendations.py --batch-size 8 --sample-size 20 --strict-pretrained
 ```
 
-La importacion requirio acceso a internet para consultar TMDB y descargar posters.
+La descarga de 600 posters requiere dos dependencias externas: conexion a PostgreSQL/DVD Rental y acceso a internet para TMDB.
+
+## Estado actual
+
+La ejecucion oficial con DVD Rental esta bloqueada porque el archivo `.env` contiene:
+
+```text
+DB_PASSWORD=your_password_here
+```
+
+Debe reemplazarse por la contrasena real del usuario `postgres`. Mientras esa credencial no sea correcta, `psycopg2` no puede abrir la conexion a `dvdrental`.
 
 ## Resultados generados
 
@@ -33,13 +46,12 @@ La importacion requirio acceso a internet para consultar TMDB y descargar poster
 
 ## Validacion
 
-- Peliculas en log: 150
-- Posters descargados segun log: 150/150
-- Archivos de poster existentes desde el log: 150/150
-- Metadatos usados por CNN: 150 peliculas
-- Embeddings visuales: `(150, 2048)`
-- Matriz de similitud: `(150, 150)`
-- Recomendaciones generadas: 100 filas, equivalentes a top-5 para 20 peliculas de muestra
+- Resultados anteriores disponibles: 150 posters de respaldo desde TMDB popular.
+- Resultados oficiales pendientes: 600 peliculas desde DVD Rental.
+- Metadatos usados por CNN actualmente: 150 peliculas de respaldo.
+- Embeddings visuales actuales: `(150, 2048)`
+- Matriz de similitud actual: `(150, 150)`
+- Recomendaciones generadas actualmente: 100 filas, equivalentes a top-5 para 20 peliculas de muestra
 - Valores NaN en embeddings: 0
 - Valores NaN en matriz de similitud: 0
 - Diagonal de similitud: minimo `0.99999958`, maximo `1.00000048`
@@ -59,4 +71,4 @@ Consulta: `Obsesion`
 
 ## Conclusion
 
-El punto 3.1 queda completo para 150 peliculas: se importaron los datos visuales, se extrajeron embeddings con ResNet-50 preentrenado, se calculo la matriz de similitud coseno y se generaron recomendaciones cold start. La validacion confirma que los artefactos tienen las dimensiones esperadas y no contienen valores faltantes.
+El codigo ya esta corregido para seguir la guia del ingeniero: DVD Rental como fuente de peliculas y TMDB para posters. Falta actualizar `DB_PASSWORD` en `.env`; despues de eso se debe ejecutar `scripts/04_download_posters.py --source db --limit 600` y luego recalcular embeddings con `scripts/06_cnn_cosine_recommendations.py`.

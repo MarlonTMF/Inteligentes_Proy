@@ -1,4 +1,4 @@
-"""Actualiza dvd_rental_posters.ipynb para importar 150 peliculas desde TMDB."""
+"""Actualiza dvd_rental_posters.ipynb para DVD Rental + TMDB con meta de 600 posters."""
 
 from __future__ import annotations
 
@@ -23,27 +23,28 @@ cells = nb["cells"]
 set_source(
     cells[0],
     """
-# CNN + Transformer sobre DVD Rental/TMDB - Importacion de 150 Posters
+# CNN + Transformer sobre DVD Rental - Obtencion de Posters
 
 **Proyecto:** CNN + Transformer sobre peliculas  
 **Modulo:** Preparacion de posters para la practica 3.1  
-**Objetivo:** importar 150 peliculas desde TMDB, descargar posters y generar un log auditable para el modulo CNN + similitud de coseno.
+**Objetivo:** leer peliculas desde la base DVD Rental, buscar posters en TMDB y generar un log auditable para el modulo CNN + similitud de coseno.
 """,
 )
 
 set_source(
     cells[7],
     """
-## 3. Descarga de 150 Posters desde TMDB (`scripts/04_download_posters.py`)
+## 3. Descarga de Posters desde DVD Rental + TMDB (`scripts/04_download_posters.py`)
 
-La base PostgreSQL local puede no estar disponible en todos los equipos, por eso este notebook usa TMDB como fuente principal para importar un lote reproducible de **150 peliculas populares**.
+Esta seccion sigue la guia del ingeniero: la fuente de peliculas es la tabla `film` de PostgreSQL/DVD Rental y TMDB se usa solo para encontrar metadatos y posters.
 
 ### Proceso
 
-1. Consultar `/movie/popular` de TMDB hasta reunir 150 peliculas con poster.
-2. Descargar cada poster en `data/posters`.
-3. Guardar `poster_download_log.csv` con `film_id`, `title`, `tmdb_id`, `poster_path` y `filename`.
-4. Validar que existan exactamente 150 archivos referenciados por el log.
+1. Consultar `SELECT film_id, title, release_year FROM film ORDER BY film_id`.
+2. Buscar cada titulo en TMDB.
+3. Descargar el poster en `data/posters`.
+4. Guardar `poster_download_log.csv` con `film_id`, `title`, `tmdb_id`, `poster_path`, `filename` y `source_dataset`.
+5. Validar la meta de la guia: minimo 600 peliculas procesadas y mas de 90% de posters descargados.
 """,
 )
 
@@ -79,29 +80,34 @@ spec.loader.exec_module(download_posters)
 
 print("Script cargado:", download_script)
 print("TMDB_API_KEY cargada:", bool(config.TMDB_API_KEY), "| longitud:", len(config.TMDB_API_KEY))
-print("Funcion disponible:", download_posters.download_popular_posters.__name__)
+print("Funcion disponible:", download_posters.download_posters_for_all_films.__name__)
 """,
 )
 
 set_source(
     cells[9],
     """
-### Ejecucion de descarga/importacion
+### Ejecucion de descarga desde DVD Rental
 
-Esta celda importa **150 peliculas** desde TMDB y descarga sus posters. Si los archivos ya existen, se reutilizan y se regenera el log.
+Esta celda procesa las primeras **600 peliculas** de DVD Rental. Si un poster ya existe, se reutiliza y se regenera el log.
 """,
 )
 
 set_source(
     cells[10],
     """
-LIMIT = 150
+LIMIT = 600
 
-df_descarga = download_posters.download_popular_posters(limit=LIMIT)
+conn = download_posters.connect_to_dvd_rental()
+try:
+    df_descarga = download_posters.download_posters_for_all_films(conn, limit=LIMIT)
+finally:
+    conn.close()
 
 downloaded = int(df_descarga["poster_downloaded"].sum())
-print(f"Peliculas importadas: {len(df_descarga)}")
-print(f"Posters descargados/reutilizados: {downloaded}/{LIMIT}")
+rate = downloaded / len(df_descarga) if len(df_descarga) else 0
+print(f"Peliculas DVD Rental procesadas: {len(df_descarga)}")
+print(f"Posters descargados/reutilizados: {downloaded}/{len(df_descarga)} ({rate:.1%})")
 
 display(df_descarga.head(10))
 """,
@@ -112,7 +118,7 @@ set_source(
     """
 ### Validacion del log de auditoria
 
-Se comprueba que el CSV tenga 150 filas, que todas esten marcadas como descargadas y que los archivos indicados por `filename` existan fisicamente en `data/posters`.
+Se comprueba que el CSV tenga al menos 600 filas procesadas, que la tasa de descarga sea superior al 90% y que los archivos indicados por `filename` existan fisicamente en `data/posters`.
 """,
 )
 
@@ -129,12 +135,14 @@ if log_file.exists():
     print("Filas en log:", len(df_auditoria))
     print("Posters marcados como descargados:", int(df_auditoria["poster_downloaded"].sum()))
     print("Archivos existentes:", int(df_auditoria["file_exists"].sum()))
+    print("Tasa de descarga:", f"{df_auditoria['poster_downloaded'].mean():.1%}")
 
-    assert len(df_auditoria) == 150, "El log debe contener 150 peliculas."
-    assert int(df_auditoria["poster_downloaded"].sum()) == 150, "Deben existir 150 posters descargados."
-    assert int(df_auditoria["file_exists"].sum()) == 150, "Deben existir 150 archivos fisicos de poster."
+    assert len(df_auditoria) >= 600, "El log debe contener al menos 600 peliculas de DVD Rental."
+    assert df_auditoria["poster_downloaded"].mean() >= 0.90, "La tasa de descarga debe ser al menos 90%."
+    assert int(df_auditoria["file_exists"].sum()) == int(df_auditoria["poster_downloaded"].sum()), "Cada poster descargado debe tener archivo fisico."
 
-    display(df_auditoria[["film_id", "title", "tmdb_id", "filename", "poster_downloaded", "file_exists"]].head(20))
+    display(df_auditoria[["film_id", "title", "release_year", "tmdb_id", "filename", "poster_downloaded", "file_exists"]].head(20))
+    display(df_auditoria.loc[~df_auditoria["poster_downloaded"], ["film_id", "title", "release_year"]].head(20))
 else:
     raise FileNotFoundError(f"No existe el log esperado: {log_file}")
 """,
@@ -148,9 +156,10 @@ set_source(
 | Actividad | Completado | Detalle |
 | :--- | :---: | :--- |
 | Configuracion de rutas y API | **[x]** | `config.py` carga `.env` y rutas locales. |
-| Importacion desde TMDB | **[x]** | Se importan 150 peliculas populares. |
-| Descarga de posters | **[x]** | `poster_download_log.csv` registra 150/150 posters. |
-| Auditoria local | **[x]** | Se valida que los 150 archivos existan fisicamente. |
+| Conexion a DVD Rental | **[ ]** | Requiere credenciales PostgreSQL validas en `.env`. |
+| Busqueda en TMDB | **[x]** | `scripts/03_tmdb_api.py` implementa cliente y fallback de busqueda. |
+| Descarga de posters | **[ ]** | Meta: minimo 600 peliculas procesadas y >90% con poster. |
+| Auditoria local | **[ ]** | Validar archivos fisicos desde `poster_download_log.csv`. |
 | Preparacion para CNN | **[x]** | Los posters quedan listos para `06_cnn_cosine_recommendations.py`. |
 """,
 )

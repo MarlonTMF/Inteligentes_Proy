@@ -25,6 +25,21 @@ from config import DB_CONFIG, POSTERS_PATH, TMDB_API_KEY
 # Importamos del modulo intermediario 'scripts_03_tmdb_api' que crearemos
 from scripts_03_tmdb_api import TMDBClient, search_film_in_tmdb
 
+def connect_to_dvd_rental():
+    """Abre conexion a PostgreSQL/DVD Rental con un mensaje de error entendible."""
+    if psycopg2 is None:
+        raise RuntimeError("Libreria 'psycopg2' no esta instalada; no se puede usar DVD Rental.")
+
+    try:
+        return psycopg2.connect(**DB_CONFIG)
+    except Exception as e:
+        raise RuntimeError(
+            "No se pudo conectar a PostgreSQL/DVD Rental. Revisa el archivo .env, "
+            "especialmente DB_PASSWORD. Actualmente debe contener la contrasena real "
+            "del usuario PostgreSQL, no 'your_password_here'."
+        ) from e
+
+
 def download_image(url, save_path):
     """Descarga una imagen de internet y la guarda en la ruta especificada."""
     try:
@@ -87,36 +102,38 @@ def get_popular_movies_from_tmdb(limit=150):
 
     return pd.DataFrame(rows).head(limit)
 
-def download_posters_for_all_films(conn, limit=None):
-    """Busca y descarga posters para las peliculas desde la base de datos o fallback."""
-    if conn is not None:
-        query = "SELECT film_id, title, release_year FROM film ORDER BY film_id"
-        try:
-            films = pd.read_sql(query, conn)
-        except Exception as e:
-            print(f"[Error] Fallo al consultar la base de datos: {e}")
-            conn = None
-            
-    if conn is None:
-        print("[Warning] No hay conexion activa a PostgreSQL. Usando fallback de peliculas de Sakila/DVD-Rental.")
-        # Peliculas representativas de DVD Rental para pruebas
-        films = pd.DataFrame([
-            {'film_id': 1, 'title': 'Academy Dinosaur', 'release_year': 2006},
-            {'film_id': 2, 'title': 'Ace Goldfinger', 'release_year': 2006},
-            {'film_id': 3, 'title': 'Adaptation Holes', 'release_year': 2006},
-            {'film_id': 4, 'title': 'Affair Prejudice', 'release_year': 2006},
-            {'film_id': 5, 'title': 'African Egg', 'release_year': 2006},
-            {'film_id': 6, 'title': 'Agent Truman', 'release_year': 2006},
-            {'film_id': 7, 'title': 'Airplane Sierra', 'release_year': 2006},
-            {'film_id': 8, 'title': 'Airport Pollock', 'release_year': 2006},
-            {'film_id': 9, 'title': 'Alabama Devil', 'release_year': 2006},
-            {'film_id': 10, 'title': 'Aladdin Calendar', 'release_year': 2006},
-        ])
+def get_films_from_db(conn, limit=None):
+    """Obtiene peliculas de la tabla film de DVD Rental."""
+    query = "SELECT film_id, title, release_year FROM film ORDER BY film_id"
+    films = pd.read_sql(query, conn)
 
     if limit:
         films = films.head(limit)
+
+    return films
+
+def get_films_from_csv(limit=None):
+    """Obtiene peliculas simulando DVD Rental desde un CSV local."""
+    csv_path = os.path.join(PROJECT_ROOT, "data", "raw", "film.csv")
+    if not os.path.exists(csv_path):
+        raise FileNotFoundError(f"El archivo {csv_path} no existe. Por favor, descargalo primero.")
+    
+    films = pd.read_csv(csv_path)
+    if limit:
+        films = films.head(limit)
+    return films
+
+
+def download_posters_for_all_films(conn=None, limit=600, use_csv=False):
+    """Busca y descarga posters para peliculas de DVD Rental usando TMDB."""
+    if use_csv:
+        films = get_films_from_csv(limit=limit)
+    else:
+        if conn is None:
+            raise ValueError("Se requiere una conexion activa a PostgreSQL/DVD Rental.")
+        films = get_films_from_db(conn, limit=limit)
         
-    print(f"Procesando {len(films)} peliculas...")
+    print(f"Procesando {len(films)} peliculas desde DVD Rental...")
     client = TMDBClient(TMDB_API_KEY)
     results = []
     
@@ -128,10 +145,12 @@ def download_posters_for_all_films(conn, limit=None):
         result = {
             'film_id': film_id,
             'title': title,
+            'release_year': year,
             'poster_downloaded': False,
             'tmdb_id': None,
             'poster_path': None,
-            'filename': None
+            'filename': None,
+            'source_dataset': 'dvd_rental'
         }
         
         tmdb_movie = search_film_in_tmdb(client, title, year)
@@ -141,9 +160,8 @@ def download_posters_for_all_films(conn, limit=None):
                 poster_url = client.get_poster_url(poster_path)
                 filename = get_poster_filename(film_id, title)
                 save_path = os.path.join(POSTERS_PATH, filename)
-                
-                # Intentar descargar la imagen
-                if download_image(poster_url, save_path):
+
+                if os.path.exists(save_path) or download_image(poster_url, save_path):
                     result['poster_downloaded'] = True
                     result['tmdb_id'] = tmdb_movie.get('id')
                     result['poster_path'] = poster_path
@@ -186,6 +204,7 @@ def download_popular_posters(limit=150):
             "tmdb_id": row.get("tmdb_id"),
             "poster_path": poster_path,
             "filename": filename,
+            "source_dataset": "tmdb_popular",
         }
 
         if os.path.exists(save_path):
@@ -206,44 +225,48 @@ def download_popular_posters(limit=150):
     print(f"Log guardado en: {log_path}")
     return results_df
 
-def verify_downloaded_posters():
-    """Verifica la cantidad de archivos JPG existentes en el directorio de posters."""
+def verify_downloaded_posters(log_df=None):
+    """Verifica posters descargados; si hay log, valida los archivos referenciados."""
+    if log_df is not None and "filename" in log_df.columns:
+        valid_filenames = log_df.dropna(subset=["filename"])["filename"]
+        existing = sum(
+            os.path.exists(os.path.join(POSTERS_PATH, str(filename)))
+            for filename in valid_filenames
+        )
+        print(f"Archivos referenciados por log: {existing}/{len(valid_filenames)}")
+        return existing
+
     poster_files = os.listdir(POSTERS_PATH)
     jpg_files = [f for f in poster_files if f.endswith('.jpg')]
-    print(f"Archivos en carpeta: {len(jpg_files)}")
+    print(f"Archivos JPG en carpeta: {len(jpg_files)}")
     return len(jpg_files)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Importa peliculas y descarga posters.")
-    parser.add_argument("--limit", type=int, default=150)
+    parser.add_argument("--limit", type=int, default=600)
     parser.add_argument(
         "--source",
-        choices=["tmdb-popular", "db"],
-        default="tmdb-popular",
-        help="tmdb-popular no requiere PostgreSQL; db usa la tabla film local.",
+        choices=["tmdb-popular", "db", "csv"],
+        default="csv",
+        help="csv usa archivo local simulando BD; db usa PostgreSQL real; tmdb-popular usa web.",
     )
     return parser.parse_args()
 
 if __name__ == "__main__":
     args = parse_args()
     conn = None
-    if args.source == "db" and psycopg2 is not None:
-        try:
-            # Intentar conexion a base de datos
-            conn = psycopg2.connect(**DB_CONFIG)
-            print("Conexion establecida con la base de datos PostgreSQL.")
-        except Exception as e:
-            print(f"No se pudo conectar a PostgreSQL ({e}). Se continuara en modo local sin base de datos.")
-    else:
-        if args.source == "db":
-            print("Libreria 'psycopg2' no esta instalada. Se continuara en modo local sin base de datos.")
+    if args.source == "db":
+        conn = connect_to_dvd_rental()
+        print("Conexion establecida con la base de datos PostgreSQL.")
         
     print("=== INICIANDO DESCARGA DE POSTERS ===\n")
     if args.source == "tmdb-popular":
         results = download_popular_posters(limit=args.limit)
+    elif args.source == "csv":
+        results = download_posters_for_all_films(conn=None, limit=args.limit, use_csv=True)
     else:
-        results = download_posters_for_all_films(conn, limit=args.limit)
-    verify_downloaded_posters()
+        results = download_posters_for_all_films(conn, limit=args.limit, use_csv=False)
+    verify_downloaded_posters(results)
     
     if conn:
         conn.close()
